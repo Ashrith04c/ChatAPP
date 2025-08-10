@@ -1,7 +1,7 @@
 import express from "express"
 
 import "dotenv/config"
-import http from "http"
+import https from "https"
 import cors from "cors"
 import { connectDB } from "./lib/db.js";
 import userRouter from "./routes/userRoutes.js";
@@ -9,7 +9,7 @@ import messageRouter from "./routes/messageRoutes.js";
 import { Server } from "socket.io";
 
 const app = express();
-const server = http.createServer(app)
+const server = https.createServer(app)
 
 // in
 export const io = new Server(server, {
