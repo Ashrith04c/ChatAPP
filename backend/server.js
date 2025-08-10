@@ -77,7 +77,7 @@ export const io = new Server(server, {
 });
 
 // Store online users
-export const userSocketMap = {}; // {userId: socketId}
+export const userSocketMap = {}; // { userId: socketId }
 
 // Socket.IO events
 io.on("connection", (socket) => {
@@ -105,13 +105,18 @@ app.use("/api/auth", userRouter);
 app.use("/api/messages", messageRouter);
 
 // Connect MongoDB and start server
-await connectDB();
 const PORT = process.env.PORT || 4000;
-const startServer = async () => {
-  await connectDB();
-  server.listen(PORT, () => {
-    console.log(`server is running on port: ${PORT}`);
-  });
-};
-startServer();
 
+const startServer = async () => {
+  try {
+    await connectDB();
+    server.listen(PORT, () => {
+      console.log(`✅ Server is running on port: ${PORT}`);
+    });
+  } catch (error) {
+    console.error("❌ Failed to start server:", error);
+    process.exit(1);
+  }
+};
+
+startServer();
