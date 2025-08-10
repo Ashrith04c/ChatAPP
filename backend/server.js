@@ -1,4 +1,4 @@
-/*import express from "express"
+import express from "express"
 
 import "dotenv/config"
 import http from "http"
@@ -56,7 +56,8 @@ if(process.env.NODE_ENV!=="production"){
 server.listen(PORT,()=> console.log("server is running on this port : "+PORT));
 }
 
-export default server;*/
+export default server;
+/*
 import express from "express";
 import "dotenv/config";
 import http from "http";
@@ -120,3 +121,4 @@ const startServer = async () => {
 };
 
 startServer();
+*/
